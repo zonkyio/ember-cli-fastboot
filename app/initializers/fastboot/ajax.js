@@ -1,9 +1,7 @@
 /* globals najax */
-import Ember from 'ember';
+import get from 'ember-metal/get';
 
-const { get } = Ember;
-
-var nodeAjax = function(options) {
+let nodeAjax = function(options) {
   let httpRegex = /^https?:\/\//;
   let protocolRelativeRegex = /^\/\//;
   let protocol = get(this, 'fastboot.request.protocol') + ':';

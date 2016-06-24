@@ -43,6 +43,7 @@
     "ember-export-application-global": "^1.0.3",
     "ember-load-initializers": "^0.5.1",
     "ember-resolver": "^2.0.3",
+    "ember-suave": "3.0.1",
     "exists-sync": "0.0.3",
     "fs-extra": "^0.24.0",
     "fs-promise": "^0.3.1",
