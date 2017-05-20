@@ -26,7 +26,7 @@ describe('generating package.json', function() {
   describe('with FastBoot builds', function() {
 
     before(function() {
-      return app.run('ember', 'build');
+      return app.runEmberCommand('build');
     });
 
     it('builds a package.json', function() {
@@ -101,7 +101,7 @@ describe('generating package.json', function() {
   describe('with production FastBoot builds', function() {
 
     before(function() {
-      return app.run('ember', 'build', '--environment', 'production');
+      return app.runEmberCommand('build', '--environment=production');
     });
 
     // https://github.com/tildeio/ember-cli-fastboot/issues/102
@@ -133,7 +133,7 @@ describe('generating package.json', function() {
     before(function() {
       return customApp.create('customized-fingerprinting')
         .then(function() {
-          return customApp.run('ember', 'build', '--environment', 'production');
+          return customApp.runEmberCommand('build', '--environment=production');
         });
     });
 
@@ -164,7 +164,7 @@ describe('generating package.json', function() {
     before(function() {
       return customApp.create('customized-outputpaths')
         .then(function() {
-          return customApp.run('ember', 'build');
+          return customApp.runEmberCommand('build');
         });
     });
 
@@ -194,7 +194,7 @@ describe('generating package.json', function() {
     before(function() {
       return customApp.create('custom-html-file')
         .then(function() {
-          return customApp.run('ember', 'build', '--environment', 'production');
+          return customApp.runEmberCommand('build', '--environment=production');
         });
     });
 
