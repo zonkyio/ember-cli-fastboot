@@ -31,7 +31,7 @@ before_install:
   - phantomjs --version
 
 install:
-  - yarn
+  - npm install
 
 script:
-  - yarn run test
+  - npm test
