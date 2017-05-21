@@ -21,6 +21,8 @@ cache:
   yarn: true
 
 before_install:
+  - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 0.24.5
+  - export PATH=$HOME/.yarn/bin:$PATH
   # Once we no longer support Node.js 0.12 we can drop this entire section.
   # prevent the npm loading indicator
   - npm config --global set spin false
@@ -31,7 +33,7 @@ before_install:
   - phantomjs --version
 
 install:
-  - npm install
+  - yarn install
 
 script:
-  - npm test
+  - yarn run test
