@@ -243,9 +243,15 @@ module.exports = {
           if (!this.fastboot) {
             // TODO(future): make this configurable for allowing apps to pass sandboxGlobals
             // and custom sandbox class
+            let launchdarkly = { server: { key: process.env.LAUNCHDARKLY_SERVER_KEY } };
+            let sandboxGlobals = {
+              Buffer,
+              launchdarkly
+            }
             this.ui.writeLine(chalk.green('App is being served by FastBoot'));
             this.fastboot = new FastBoot({
-              distPath: outputPath
+              distPath: outputPath,
+              sandboxGlobals
             });
 
             fastbootMiddleware = FastBootExpressMiddleware({
