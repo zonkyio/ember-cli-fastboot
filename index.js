@@ -16,6 +16,7 @@ const migrateInitializers = require('./lib/build-utilities/migrate-initializers'
 const Concat = require('broccoli-concat');
 const Funnel = require('broccoli-funnel');
 const p = require('ember-cli-preprocess-registry/preprocessors');
+const fastbootTransform = require('fastboot-transform');
 const existsSync = require('exists-sync');
 
 /*
@@ -59,6 +60,12 @@ module.exports = {
     this._name = app.name;
 
     migrateInitializers(this.project);
+  },
+
+  importTransforms() {
+    return {
+      fastbootShim: fastbootTransform
+    };
   },
 
   /**
