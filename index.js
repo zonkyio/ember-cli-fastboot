@@ -318,7 +318,8 @@ module.exports = {
             let launchdarkly = { server: { key: process.env.LAUNCHDARKLY_SERVER_KEY } };
             let sandboxGlobals = {
               Buffer,
-              launchdarkly
+              launchdarkly,
+              secretTrustHeader: process.env.SECRET_TRUST_HEADER
             }
             this.ui.writeLine(chalk.green('App is being served by FastBoot'));
             this.fastboot = new FastBoot({
