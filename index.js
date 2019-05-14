@@ -3,6 +3,7 @@
 
 const path = require('path');
 const fs = require('fs');
+const exec = require('child_process');
 
 const MergeTrees = require('broccoli-merge-trees');
 const FastBootExpressMiddleware = require('fastboot-express-middleware');
@@ -321,11 +322,13 @@ module.exports = {
               launchdarkly,
               secretTrustHeader: process.env.SECRET_TRUST_HEADER
             }
+            this._installDependencies(outputPath);
             this.ui.writeLine(chalk.green('App is being served by FastBoot'));
             this.fastboot = new FastBoot({
               distPath: outputPath,
               sandboxGlobals
             });
+
           }
 
           let fastbootMiddleware = FastBootExpressMiddleware({
@@ -351,6 +354,11 @@ module.exports = {
         distPath: result.directory
       });
     }
+  },
+
+  _installDependencies(distPath) {
+    this.ui.writeLine(chalk.green('npm install FastBoot dependencies...'));
+    exec.execSync('npm install', { cwd: distPath });
   },
 
   _getEmberCliVersion() {
