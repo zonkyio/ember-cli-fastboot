@@ -17,7 +17,7 @@ export function clearHtml() {
       parent.removeChild(current);
       current = nextNode;
     } while (nextNode && nextNode !== endMarker);
-    parent.removeChild(endMarker);
+    endMarker.parentElement.removeChild(endMarker);
   }
 }
 export default {
