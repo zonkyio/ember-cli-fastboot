@@ -316,7 +316,7 @@ module.exports = {
           if (!this.fastboot) {
             // TODO(future): make this configurable for allowing apps to pass sandboxGlobals
             // and custom sandbox class
-            let launchdarkly = { server: { key: process.env.LAUNCHDARKLY_SERVER_KEY } };
+            let launchdarkly = process.env.LAUNCHDARKLY_SERVER_KEY ? require('launchdarkly-node-server-sdk').init(process.env.LAUNCHDARKLY_SERVER_KEY) : undefined;
             let sandboxGlobals = {
               Buffer,
               launchdarkly,
